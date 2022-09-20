@@ -24,15 +24,15 @@ app.use(documentRouter);
 
 
  mongoose.connect(DB).then(()=>{
-    console.log("Connection Successful")
+  //  console.log("Connection Successful")
 }).catch((e)=>{
-    console.log(e);
+  //  console.log(e);
 });
 
   io.on("connection", (socket) => {
     socket.on("join", (documentId)=>{
       socket.join(documentId);
-      console.log("socket connected " );
+     // console.log("socket connected " );
     });
    socket.on("typing", (data)=>{
     socket.broadcast.to(data.room).emit("changes", data);
@@ -51,6 +51,6 @@ app.use(documentRouter);
   }
 server.listen(PORT, "0.0.0.0", ()=>{
   //  console.log("connected at port  " + PORT)
-    console.log(`connected at port ${PORT}`);
+    //console.log(`connected at port ${PORT}`);
 });
  
